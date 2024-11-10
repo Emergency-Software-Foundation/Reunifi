@@ -1,0 +1,19 @@
+GET /api/case.php?CID={caseId} -> JSON
+{
+	response: xxx,
+	msg: text,
+	?caseId: int,
+	?names: [],
+	?dob: [],
+	?addresses: [],
+	?phones: [],
+	?emails: [],
+	?found: []
+}
+
+GET /api/cases.php[?seeker={seekerId}] -> JSON
+{
+	response: xxx,
+	msg: text,
+	?CIDs: []
+}
