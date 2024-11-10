@@ -19,3 +19,5 @@ GET /api/cases.php[?seeker={seekerId}] -> JSON
 }
 
 POST /api/insertData.php -> JSON -> JSON
+
+GET /api/mergeCase.php?a={caseId}&b={caseId} -> JSON
