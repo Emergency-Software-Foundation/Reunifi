@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 10, 2024 at 04:01 AM
+-- Generation Time: Nov 10, 2024 at 09:15 AM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.26
 
@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `reunifi`
 --
-CREATE DATABASE IF NOT EXISTS `reunifi` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE DATABASE IF NOT EXISTS `reunifi` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `reunifi`;
 
 -- --------------------------------------------------------
@@ -33,13 +33,13 @@ DROP TABLE IF EXISTS `auth`;
 CREATE TABLE IF NOT EXISTS `auth` (
   `AID` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `seeker` int UNSIGNED NOT NULL,
-  `usrnm` text NOT NULL,
-  `pswd` text NOT NULL,
+  `usrnm` text COLLATE utf8mb4_general_ci NOT NULL,
+  `pswd` text COLLATE utf8mb4_general_ci NOT NULL,
   `iscaseworker` tinyint(1) NOT NULL,
   PRIMARY KEY (`AID`),
   UNIQUE KEY `AID` (`AID`),
   KEY `seeker` (`seeker`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `cases` (
   `CID` int UNSIGNED NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`CID`),
   UNIQUE KEY `FID` (`CID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -64,10 +64,10 @@ DROP TABLE IF EXISTS `cases.emails`;
 CREATE TABLE IF NOT EXISTS `cases.emails` (
   `EID` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `caseId` int UNSIGNED NOT NULL,
-  `email` text NOT NULL,
+  `email` text COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`EID`),
   KEY `caseId` (`caseId`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -79,12 +79,12 @@ DROP TABLE IF EXISTS `cases.found`;
 CREATE TABLE IF NOT EXISTS `cases.found` (
   `FID` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `caseId` int UNSIGNED NOT NULL,
-  `location` text NOT NULL,
+  `location` text COLLATE utf8mb4_general_ci NOT NULL,
   `timefound` datetime NOT NULL,
-  `foundby` text NOT NULL,
+  `foundby` text COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`FID`),
   KEY `caseId` (`caseId`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -96,15 +96,15 @@ DROP TABLE IF EXISTS `cases.lka`;
 CREATE TABLE IF NOT EXISTS `cases.lka` (
   `KID` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `caseId` int UNSIGNED NOT NULL,
-  `street1` text NOT NULL,
-  `street2` text NOT NULL,
-  `city` text NOT NULL,
-  `state` text NOT NULL,
-  `zip` text NOT NULL,
-  `notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `street1` text COLLATE utf8mb4_general_ci NOT NULL,
+  `street2` text COLLATE utf8mb4_general_ci NOT NULL,
+  `city` text COLLATE utf8mb4_general_ci NOT NULL,
+  `state` text COLLATE utf8mb4_general_ci NOT NULL,
+  `zip` text COLLATE utf8mb4_general_ci NOT NULL,
+  `notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`KID`),
   KEY `caseId` (`caseId`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -116,13 +116,13 @@ DROP TABLE IF EXISTS `cases.names`;
 CREATE TABLE IF NOT EXISTS `cases.names` (
   `NID` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `caseId` int UNSIGNED NOT NULL,
-  `fname` text,
-  `mname` text,
-  `lname` text,
-  `suffix` text,
+  `fname` text COLLATE utf8mb4_general_ci,
+  `mname` text COLLATE utf8mb4_general_ci,
+  `lname` text COLLATE utf8mb4_general_ci,
+  `suffix` text COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`NID`),
   KEY `caseId` (`caseId`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -134,13 +134,13 @@ DROP TABLE IF EXISTS `cases.phones`;
 CREATE TABLE IF NOT EXISTS `cases.phones` (
   `PID` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `caseId` int UNSIGNED NOT NULL,
-  `country` text,
-  `area` text,
-  `prefix` text,
-  `line` text,
+  `country` text COLLATE utf8mb4_general_ci,
+  `area` text COLLATE utf8mb4_general_ci,
+  `prefix` text COLLATE utf8mb4_general_ci,
+  `line` text COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`PID`),
   KEY `caseId` (`caseId`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `found.dob` (
   `year` int DEFAULT NULL,
   PRIMARY KEY (`DID`),
   KEY `caseId` (`caseId`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -173,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `mycases` (
   PRIMARY KEY (`MID`),
   UNIQUE KEY `MID` (`MID`),
   KEY `seekerId` (`seekerId`,`caseId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -184,12 +184,12 @@ CREATE TABLE IF NOT EXISTS `mycases` (
 DROP TABLE IF EXISTS `seekers`;
 CREATE TABLE IF NOT EXISTS `seekers` (
   `SID` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `seeker` text NOT NULL,
-  `phone` text NOT NULL,
-  `email` text NOT NULL,
+  `seeker` text COLLATE utf8mb4_general_ci NOT NULL,
+  `phone` text COLLATE utf8mb4_general_ci NOT NULL,
+  `email` text COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`SID`),
   UNIQUE KEY `SID` (`SID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
