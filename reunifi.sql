@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 10, 2024 at 02:24 AM
+-- Generation Time: Nov 10, 2024 at 04:01 AM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.26
 
@@ -44,44 +44,120 @@ CREATE TABLE IF NOT EXISTS `auth` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `caselink`
---
-
-DROP TABLE IF EXISTS `caselink`;
-CREATE TABLE IF NOT EXISTS `caselink` (
-  `LID` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `a` int UNSIGNED NOT NULL,
-  `b` int UNSIGNED NOT NULL,
-  `linkedby` text NOT NULL,
-  PRIMARY KEY (`LID`),
-  UNIQUE KEY `LID` (`LID`),
-  KEY `a` (`a`,`b`),
-  KEY `b` (`b`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `cases`
 --
 
 DROP TABLE IF EXISTS `cases`;
 CREATE TABLE IF NOT EXISTS `cases` (
   `CID` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `fname` text NOT NULL,
-  `mname` text NOT NULL,
-  `lname` text NOT NULL,
-  `dob` date NOT NULL,
-  `lka` text NOT NULL,
-  `phone` text NOT NULL,
-  `email` text NOT NULL,
-  `isfound` tinyint(1) NOT NULL,
-  `loc` text NOT NULL,
-  `timefound` datetime NOT NULL,
-  `finder` text NOT NULL,
   PRIMARY KEY (`CID`),
   UNIQUE KEY `FID` (`CID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cases.emails`
+--
+
+DROP TABLE IF EXISTS `cases.emails`;
+CREATE TABLE IF NOT EXISTS `cases.emails` (
+  `EID` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `caseId` int UNSIGNED NOT NULL,
+  `email` text NOT NULL,
+  PRIMARY KEY (`EID`),
+  KEY `caseId` (`caseId`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cases.found`
+--
+
+DROP TABLE IF EXISTS `cases.found`;
+CREATE TABLE IF NOT EXISTS `cases.found` (
+  `FID` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `caseId` int UNSIGNED NOT NULL,
+  `location` text NOT NULL,
+  `timefound` datetime NOT NULL,
+  `foundby` text NOT NULL,
+  PRIMARY KEY (`FID`),
+  KEY `caseId` (`caseId`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cases.lka`
+--
+
+DROP TABLE IF EXISTS `cases.lka`;
+CREATE TABLE IF NOT EXISTS `cases.lka` (
+  `KID` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `caseId` int UNSIGNED NOT NULL,
+  `street1` text NOT NULL,
+  `street2` text NOT NULL,
+  `city` text NOT NULL,
+  `state` text NOT NULL,
+  `zip` text NOT NULL,
+  `notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  PRIMARY KEY (`KID`),
+  KEY `caseId` (`caseId`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cases.names`
+--
+
+DROP TABLE IF EXISTS `cases.names`;
+CREATE TABLE IF NOT EXISTS `cases.names` (
+  `NID` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `caseId` int UNSIGNED NOT NULL,
+  `fname` text,
+  `mname` text,
+  `lname` text,
+  `suffix` text,
+  PRIMARY KEY (`NID`),
+  KEY `caseId` (`caseId`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cases.phones`
+--
+
+DROP TABLE IF EXISTS `cases.phones`;
+CREATE TABLE IF NOT EXISTS `cases.phones` (
+  `PID` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `caseId` int UNSIGNED NOT NULL,
+  `country` text,
+  `area` text,
+  `prefix` text,
+  `line` text,
+  PRIMARY KEY (`PID`),
+  KEY `caseId` (`caseId`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `found.dob`
+--
+
+DROP TABLE IF EXISTS `found.dob`;
+CREATE TABLE IF NOT EXISTS `found.dob` (
+  `DID` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `caseId` int UNSIGNED NOT NULL,
+  `month` int DEFAULT NULL,
+  `day` int DEFAULT NULL,
+  `year` int DEFAULT NULL,
+  PRIMARY KEY (`DID`),
+  KEY `caseId` (`caseId`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -114,17 +190,6 @@ CREATE TABLE IF NOT EXISTS `seekers` (
   PRIMARY KEY (`SID`),
   UNIQUE KEY `SID` (`SID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `caselink`
---
-ALTER TABLE `caselink`
-  ADD CONSTRAINT `caselink_ibfk_1` FOREIGN KEY (`a`) REFERENCES `cases` (`CID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `caselink_ibfk_2` FOREIGN KEY (`b`) REFERENCES `cases` (`CID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
