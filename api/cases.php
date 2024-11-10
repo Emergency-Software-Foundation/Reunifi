@@ -1,7 +1,7 @@
 <?php
 	header('Content-Type: application/json');
 
-	include("db.php");
+	include("../db.php");
 
 	$conn = new mysqli($db_server, $db_user, $db_password, $db_db);
 	if ($conn->connect_error) {
