@@ -17,3 +17,5 @@ GET /api/cases.php[?seeker={seekerId}] -> JSON
 	msg: text,
 	?CIDs: []
 }
+
+POST /api/insertData.php -> JSON -> JSON
