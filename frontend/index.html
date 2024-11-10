@@ -24,21 +24,62 @@
 			<button class="closeModal" aria-label="Close" rel="prev" data-target="find" onclick="toggleModal(event)"></button>
 			<h2>Find</h2>
 		</header>
-		<form>
-            <input
-              type="text"
-              name="firstname"
-              placeholder="First name"
-              aria-label="First name"
-              required
-            />
-            <input
-              type="text"
-              name="lastname"
-              placeholder="Last name"
-              aria-label="Last name"
-              required
-            />
+				<form>
+			<label for="fullname">Your name:</label>
+			<fieldset name="fullname" class="grid">
+        <input
+          type="text"
+          name="seekerFirstname"
+          placeholder="Your first name"
+          aria-label="First name"
+          required
+        />
+        <input
+          type="text"
+          name="seekerLastname"
+          placeholder="Your last name"
+          aria-label="Last name"
+          required
+        />
+			</fieldset>
+
+      <label for="contact-num">Your contact phone number</label>
+      <input type="tel" name="contact-num" placeholder="Your phone number" aria-label="Contact Phone Number" autocomplete="tel">
+      <label for="contact-email">Your contact email</label>
+      <input type="email" name="contact-email" placeholder="Your email" aria-label="Email" autocomplete="email">
+			
+			<label for="create-confirm-password">Set a password to access up to date information:</label>
+			<fieldset class="grid" id="create-confirm-password">
+				<input type="password" name="create-password" placeholder="Password" aria-label="Password">
+				<input type="password" name="confirm-password" placeholder="Confirm password" aria-label="Password">
+			</fieldset>
+
+			<label for="fullname">Who are you looking for?</label>
+			<fieldset name="fullname" class="grid">
+        <input
+          type="text"
+          name="firstname"
+          placeholder="Their first name"
+          aria-label="First name"
+          required
+        />
+        <input
+          type="text"
+          name="lastname"
+          placeholder="Their last name"
+          aria-label="Last name"
+          required
+        />
+			</fieldset>
+			<label for="dob">When were they born?</label>
+      <input type="date" name="dob" aria-label="Date of Birth">
+      <label for="contact-num">Where do they live?</label>
+      <input
+        type="text"
+        name="address"
+        placeholder="Last known address"
+        aria-label="Last known address"
+      />
 	    <input
 	      type="submit"
 	      value="Submit"
@@ -55,36 +96,43 @@
 			<h2>I am Safe</h2>
 		</header>
 		<form>
-            <input
-              type="text"
-              name="firstname"
-              placeholder="First name"
-              aria-label="First name"
-              required
-            />
-            <input
-              type="text"
-              name="lastname"
-              placeholder="Last name"
-              aria-label="Last name"
-              required
-            />
-            <input type="date" name="dob" aria-label="Date of Birth">
-            <input
-              type="text"
-              name="location"
-              placeholder="Current location"
-              aria-label="Current location"
-              required
-            />
-            <input
-              type="text"
-              name="address"
-              placeholder="Last known address"
-              aria-label="Last known address"
-              required
-            />
-            <input type="tel" name="contact-num" placeholder="Contact Phone Number" aria-label="Contact Phone Number" autocomplete="tel">
+			<label for="fullname">Your name:</label>
+			<fieldset name="fullname" class="grid">
+        <input
+          type="text"
+          name="firstname"
+          placeholder="First name"
+          aria-label="First name"
+          required
+        />
+        <input
+          type="text"
+          name="lastname"
+          placeholder="Last name"
+          aria-label="Last name"
+          required
+        />
+			</fieldset>
+			<label for="dob">When were you born?</label>
+      <input type="date" name="dob" aria-label="Date of Birth">
+      <label for="contact-num">Where are you?</label>
+      <input
+        type="text"
+        name="location"
+        placeholder="Current location"
+        aria-label="Current location"
+        required
+      />
+      <label for="contact-num">Where do you live?</label>
+      <input
+        type="text"
+        name="address"
+        placeholder="Last known address"
+        aria-label="Last known address"
+        required
+      />
+      <label for="contact-num">Your contact phone number</label>
+      <input type="tel" name="contact-num" placeholder="Phone number" aria-label="Contact Phone Number" autocomplete="tel">
 	    <input
 	      type="submit"
 	      value="Submit"

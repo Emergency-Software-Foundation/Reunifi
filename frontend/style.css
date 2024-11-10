@@ -3,3 +3,12 @@
 	margin-bottom: 3%;
 	margin-top: 1%;
 }
+
+.flex {
+	display: flex;
+	margin: auto;
+}
+.flex h3 {
+	width: auto;
+	margin: auto;
+}
