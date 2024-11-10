@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Reunifi</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<main class="container">
+<center>
+	<h1>Reunifi</h1>
+	<div>
+  		<button class="mainButton" data-target="find" onclick="toggleModal(event)">Find</button>
+  		<button class="mainButton" data-target="IamSafe" onclick="toggleModal(event)">I am Safe</button>
+	</div>
+	<a href="/login.html" data-target="loginModal" onclick="toggleModal(event)">Login</a>
+</center>
+</main>
+<dialog id="find">
+	<article>
+		<header>
+			<button class="closeModal" aria-label="Close" rel="prev" data-target="find" onclick="toggleModal(event)"></button>
+			<h2>Find</h2>
+		</header>
+		<form>
+            <input
+              type="text"
+              name="firstname"
+              placeholder="First name"
+              aria-label="First name"
+              required
+            />
+            <input
+              type="text"
+              name="lastname"
+              placeholder="Last name"
+              aria-label="Last name"
+              required
+            />
+	    <input
+	      type="submit"
+	      value="Submit"
+	    />
+		</form>
+	</article>
+</dialog>
+
+
+<dialog id="IamSafe">
+	<article>
+		<header>
+			<button class="closeModal" aria-label="Close" rel="prev" data-target="IamSafe" onclick="toggleModal(event)"></button>
+			<h2>I am Safe</h2>
+		</header>
+		<form>
+            <input
+              type="text"
+              name="firstname"
+              placeholder="First name"
+              aria-label="First name"
+              required
+            />
+            <input
+              type="text"
+              name="lastname"
+              placeholder="Last name"
+              aria-label="Last name"
+              required
+            />
+            <input type="date" name="dob" aria-label="Date of Birth">
+            <input
+              type="text"
+              name="location"
+              placeholder="Current location"
+              aria-label="Current location"
+              required
+            />
+            <input
+              type="text"
+              name="address"
+              placeholder="Last known address"
+              aria-label="Last known address"
+              required
+            />
+            <input type="tel" name="contact-num" placeholder="Contact Phone Number" aria-label="Contact Phone Number" autocomplete="tel">
+	    <input
+	      type="submit"
+	      value="Submit"
+	    />
+		</form>
+	</article>
+</dialog>
+
+<dialog id="loginModal">
+	<article>
+		<header>
+			<button class="closeModal" aria-label="Close" rel="prev" data-target="loginModal" onclick="toggleModal(event)"></button>
+			<h2>Login</h2>
+		</header>
+		<form>
+		<input 
+	      name="usrname"
+	      placeholder="Username"
+	      aria-label="Username"
+	      autocomplete="username"
+	    />
+	    <input
+	      type="password"
+	      name="pswd"
+	      placeholder="Password"
+	      aria-label="Password"
+	      autocomplete="current-password"
+	    />
+	    <input
+	      type="submit"
+	      value="Log in"
+	    />
+		</form>
+		<footer>
+			<a href="#">Forgot Password?</a>
+		</footer>
+	</article>
+</dialog>
+<script src="index.js"></script>
+</body>
+</html>

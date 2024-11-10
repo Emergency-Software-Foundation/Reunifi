@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Reunifi | Cases</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<main class="container">
+
+<h1 align="center">Reunifi</h1>
+<form role="search">
+  <input name="search" type="search" placeholder="Search by Case ID"/>
+  <input type="submit" value="Search" />
+</form>
+
+<details>
+  <summary>Search filter:</summary>
+  <div name="caseSearchSelector" id="caseSearchSelector" role="group">
+	<button aria-current="true">Case ID</button>
+	<button>Name</button>
+	<button>DOB</button>
+</div>
+</details>
+
+
+<h3>My Cases</h3>
+<table class="striped">
+	<tr>
+		<th>Case ID</th>
+		<th>Name</th>
+		<th>DOB</th>
+		<th>Found</th>
+	</tr>
+</table>
+</main>
+</body>
+</html>
