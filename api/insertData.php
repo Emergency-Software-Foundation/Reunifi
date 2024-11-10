@@ -47,7 +47,7 @@
 	
 	if (isset($req["addresses"])) {
 		foreach ($req["addresses"] as $x) {
-			$sql = "INSERT INTO cases_lka (caseId,street1,street2,city,state,zip,notes) VALUES (".$caseId.",".$x["street1"].",".$x["street2"].",".$x["city"].",".$x["state"].",".$x["zipcode"].",".$x["notes"].")";
+		$sql = "INSERT INTO cases_lka (caseId,street1,street2,city,state,zip,notes) VALUES (".$caseId.",".returnNotNull($x,"street1").",".returnNotNull($x,"street2").",".returnNotNull($x,"city").",".returnNotNull($x,"state").",".returnNotNull($x,"zipcode").",".returnNotNull($x,"notes").")";
 			if (!($conn->query($sql) === TRUE)) {
 				$res = array("response" => "500", "msg" => "Failed to insert case data: ".json_encode($req["addresses"]));
 				die(json_encode($res));
@@ -57,7 +57,7 @@
 	
 	if (isset($req["emails"])) {
 		foreach ($req["emails"] as $x) {
-			$sql = "INSERT INTO cases_emails (caseId,email) VALUES (".$caseId.",".$x["email"].")";
+			$sql = "INSERT INTO cases_emails (caseId,email) VALUES (".$caseId.",".returnNotNull($x,"email").")";
 			if (!($conn->query($sql) === TRUE)) {
 				$res = array("response" => "500", "msg" => "Failed to insert case data: ".json_encode($req["emails"]));
 				die(json_encode($res));
@@ -77,7 +77,7 @@
 	
 	if (isset($req["found"])) {
 		foreach ($req["found"] as $x) {
-			$sql = "INSERT INTO cases_found (caseId,location,timefound,foundby) VALUES (".$caseId.",".$x["location"].",NOW(),".$x["foundby"].")";
+			$sql = "INSERT INTO cases_found (caseId,location,timefound,foundby) VALUES (".$caseId.",".returnNotNull($x,"location").",NOW(),".returnNotNull($x,"foundby").")";
 			if (!($conn->query($sql) === TRUE)) {
 				$res = array("response" => "500", "msg" => "Failed to insert case data: ".json_encode($req["phones"]));
 				die(json_encode($res));
