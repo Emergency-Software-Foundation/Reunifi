@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 10, 2024 at 01:29 AM
+-- Generation Time: Nov 10, 2024 at 02:24 AM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.26
 
@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `auth` (
   `seeker` int UNSIGNED NOT NULL,
   `usrnm` text NOT NULL,
   `pswd` text NOT NULL,
+  `iscaseworker` tinyint(1) NOT NULL,
   PRIMARY KEY (`AID`),
   UNIQUE KEY `AID` (`AID`),
   KEY `seeker` (`seeker`)
@@ -110,7 +111,6 @@ CREATE TABLE IF NOT EXISTS `seekers` (
   `seeker` text NOT NULL,
   `phone` text NOT NULL,
   `email` text NOT NULL,
-  `iscaseworker` tinyint(1) NOT NULL,
   PRIMARY KEY (`SID`),
   UNIQUE KEY `SID` (`SID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

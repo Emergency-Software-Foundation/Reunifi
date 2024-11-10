@@ -37,9 +37,9 @@ if (isset($_POST["usrnm"]) && isset($_POST["pswrd"])) {
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
-			$pswrd = $row["password"];
-			$isAdmin = $row["isAdmin"];
-			$id = $row["UUID"];
+			$pswrd = $row["pswrd"];
+			$isAdmin = $row["iscaseworker"];
+			$id = $row["seeker"];
 		}
 	} else {
 		die("<script>location.href = '?error=login'</script>");
